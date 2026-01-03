@@ -1,7 +1,9 @@
 import numpy as np
+import os
 
 # ---------- Load embeddings ----------
-data = np.load("trimmed.npz", allow_pickle=True)
+npz_file = "glove_full.npz"
+data = np.load(npz_file, allow_pickle=True)
 words = data["words"]
 vectors = data["vectors"]
 
