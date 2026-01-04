@@ -6,6 +6,7 @@
   },
 
   "probes": [
+
     {
       "id": "POL_SYM_01",
       "domain": "politics",
@@ -29,6 +30,22 @@
       "expression": "government - people + elite",
       "paired_expression": "government - elite + people",
       "base_word": "government"
+    },
+    {
+      "id": "POL_SYM_04",
+      "domain": "politics",
+      "type": "symmetry",
+      "expression": "state - citizen + ruler",
+      "paired_expression": "state - ruler + citizen",
+      "base_word": "state"
+    },
+    {
+      "id": "POL_SYM_05",
+      "domain": "politics",
+      "type": "symmetry",
+      "expression": "order - freedom + control",
+      "paired_expression": "order - control + freedom",
+      "base_word": "order"
     },
 
     {
@@ -112,6 +129,23 @@
       "paired_expression": "self - mind + body",
       "base_word": "self"
     },
+    {
+      "id": "PHI_SYM_04",
+      "domain": "philosophy",
+      "type": "symmetry",
+      "expression": "knowledge - belief + evidence",
+      "paired_expression": "knowledge - evidence + belief",
+      "base_word": "knowledge"
+    },
+    {
+      "id": "PHI_SYM_05",
+      "domain": "philosophy",
+      "type": "symmetry",
+      "expression": "logic - belief + reason",
+      "paired_expression": "logic - reason + belief",
+      "base_word": "logic"
+    },
+
     {
       "id": "PHI_01",
       "domain": "philosophy",
@@ -235,6 +269,47 @@
     },
 
     {
+      "id": "NE_SYM_01",
+      "domain": "named_entities",
+      "type": "symmetry",
+      "expression": "hitler - germany + italy",
+      "paired_expression": "hitler - italy + germany",
+      "base_word": "hitler"
+    },
+    {
+      "id": "NE_SYM_02",
+      "domain": "named_entities",
+      "type": "symmetry",
+      "expression": "napoleon - france + germany",
+      "paired_expression": "napoleon - germany + france",
+      "base_word": "napoleon"
+    },
+    {
+      "id": "NE_SYM_03",
+      "domain": "named_entities",
+      "type": "symmetry",
+      "expression": "stalin - russia + germany",
+      "paired_expression": "stalin - germany + russia",
+      "base_word": "stalin"
+    },
+    {
+      "id": "NE_SYM_04",
+      "domain": "named_entities",
+      "type": "symmetry",
+      "expression": "obama - president + leader",
+      "paired_expression": "obama - leader + president",
+      "base_word": "obama"
+    },
+    {
+      "id": "NE_SYM_05",
+      "domain": "named_entities",
+      "type": "symmetry",
+      "expression": "trump - president + business",
+      "paired_expression": "trump - business + president",
+      "base_word": "trump"
+    },
+
+    {
       "id": "NE_01",
       "domain": "named_entities",
       "type": "linear",
@@ -290,5 +365,6 @@
       "expression": "buddha - religion + philosophy",
       "base_word": "buddha"
     }
+
   ]
 }

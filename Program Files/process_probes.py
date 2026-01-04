@@ -6,14 +6,14 @@ from scipy.stats import spearmanr
 # ===============================
 # Load embeddings (RAW)
 # ===============================
-data = np.load("glove_full.npz", allow_pickle=True)
+data = np.load("Datasets/glove.6B.300d_full_raw.npz", allow_pickle=True)
 words = data["words"]
 vectors = data["vectors"]  # <-- RAW, NOT normalized
 
 word_to_index = {w: i for i, w in enumerate(words)}
 DIM = vectors.shape[1]
 
-print("Embedding shape:", vectors.shape)
+#("Embedding shape:", vectors.shape)
 
 # ===============================
 # GLOBAL SANITY CHECKS
@@ -22,7 +22,7 @@ if "man" in word_to_index and "woman" in word_to_index:
     man = vectors[word_to_index["man"]]
     woman = vectors[word_to_index["woman"]]
     cos_mw = np.dot(man, woman) / (np.linalg.norm(man) * np.linalg.norm(woman))
-    print("cos(man, woman) =", cos_mw)
+    
 
 # ===============================
 # Utilities
@@ -96,11 +96,6 @@ def run_probes(probe_json, output_csv, embedding_name="glove_300d"):
 
             # Default values
             sym_dist = sym_overlap = sym_rank = sym_entropy = 0.0
-            print(
-                    f"[CHECK] id={p['id']} | type={repr(p.get('type'))} | "
-                    f"normalized={repr(probe_type)} | "
-                    f"has_pair={'paired_expression' in p}"
-                )
             if probe_type == "symmetry":
                 sym_dist, sym_overlap, sym_rank, sym_entropy = symmetry_metrics(
                     p["expression"],
@@ -127,19 +122,8 @@ def run_probes(probe_json, output_csv, embedding_name="glove_300d"):
 def symmetry_metrics(expr_a, expr_b):
     v1, used1, _ = evaluate_expression(expr_a)
     v2, used2, _ = evaluate_expression(expr_b)
-
-    print("\nSYMMETRY TEST")
-    print(expr_a, "<->", expr_b)
-
-    print("v1 == v2 ?", np.allclose(v1, v2))
-    print("L2 distance:", np.linalg.norm(v1 - v2))
-
     n1 = top_k_neighbors(v1, used1, 5)
     n2 = top_k_neighbors(v2, used2, 5)
-
-    print("Neighbors A:", n1)
-    print("Neighbors B:", n2)
-
     w1 = [w for w, _ in n1]
     w2 = [w for w, _ in n2]
 
@@ -162,4 +146,4 @@ def symmetry_metrics(expr_a, expr_b):
 # MANUAL TEST (RUN THIS FIRST)
 # ===============================
 if __name__ == "__main__":
-    run_probes( probe_json="probes.json", output_csv="probe_results.csv", embedding_name="glove_50d" )
+    run_probes( probe_json="Probes.json", output_csv="probe_results.csv", embedding_name="glove_50d" )

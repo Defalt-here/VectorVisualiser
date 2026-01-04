@@ -2,7 +2,7 @@ import numpy as np
 import os
 
 # ---------- Load embeddings ----------
-npz_file = "glove_full.npz"
+npz_file = "Datasets/glove_full.npz"
 data = np.load(npz_file, allow_pickle=True)
 words = data["words"]
 vectors = data["vectors"]
@@ -62,7 +62,7 @@ def evaluate_expression(expr):
         result += sign * vec
         used_words.add(word)
 
-    result = normalize(result)
+    # Do not normalize here; keep raw vector arithmetic result.
     return result, used_words, base_word
 
 
